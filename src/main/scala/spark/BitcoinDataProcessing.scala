@@ -17,8 +17,8 @@ object BitcoinDataProcessing {
     val rdd = sc.parallelize(dataSeq)
     println(rdd.collect().foreach(print))
 
-    val filePath = "/home/ec2-user/bigdata_nov_2024/hitesh/bitcoin_data/bitcoin_data.csv"
-
+    val filePath = "/tmp/bigdata_nov_2024/hitesh/bitcoin_data.csv"
+    println(s"File Path ------> $filePath")
     val spark = SparkSession.builder
       .appName("BitcoinDataProcessing")
       .master("local[*]") // or any other cluster settings
