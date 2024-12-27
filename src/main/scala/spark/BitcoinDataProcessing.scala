@@ -17,7 +17,7 @@ object BitcoinDataProcessing {
     val rdd = sc.parallelize(dataSeq)
     println(rdd.collect().foreach(print))
 
-    val filePath = "\"D:\\Workspace\\BitcoinProject\\assets\\bitcoin_data.csv\""
+    val filePath = "/home/ec2-user/bigdata_nov_2024/hitesh/bitcoin_data/bitcoin_data.csv"
 
     val spark = SparkSession.builder
       .appName("BitcoinDataProcessing")
