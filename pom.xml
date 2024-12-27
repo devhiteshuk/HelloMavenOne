@@ -23,6 +23,18 @@
             <version>2.4.7</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>2.4.5</version> <!-- or other compatible Spark versions -->
+        </dependency>
+
+        <dependency>
+            <groupId>com.databricks</groupId>
+            <artifactId>spark-csv_2.10</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -1,6 +1,8 @@
 package spark
 
 import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.DataFrame
 
 object BitcoinDataProcessing {
 
@@ -16,6 +18,22 @@ object BitcoinDataProcessing {
     println(rdd.collect().foreach(print))
 
     val filePath = "\"D:\\Workspace\\BitcoinProject\\assets\\bitcoin_data.csv\""
-    println(s"File Path is $filePath")
+
+    val spark = SparkSession.builder
+      .appName("BitcoinDataProcessing")
+      .master("local[*]") // or any other cluster settings
+      .getOrCreate()
+
+    val df: DataFrame = spark.read
+      .format("com.databricks.spark.csv")  // Use the legacy format
+      .option("header", "true")  // Use the first row as headers
+      .option("inferSchema", "true")  // Automatically infer data types
+      .load(filePath)
+
+    // Show the first few rows of the DataFrame
+    df.show()
+    println("*************************************************************************************")
+    println(s"Data ------> ${df.show(15)}")
+    println("*************************************************************************************")
   }
 }
