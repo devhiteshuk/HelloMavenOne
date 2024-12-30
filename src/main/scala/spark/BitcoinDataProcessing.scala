@@ -42,12 +42,9 @@ object BitcoinDataProcessing {
 
   // Function to transform data (filter and add new columns)
   def transformData(df: DataFrame): DataFrame = {
-    df.filter("Volume > 0") // Filter out rows with Volume = 0
-      .withColumn("Date", from_unixtime(col("Timestamp")).cast("timestamp")) // Convert Timestamp to Date
+    df.withColumn("Date", from_unixtime(col("Timestamp")).cast("timestamp")) // Convert Timestamp to Date
 
     print(s"New Field added ${df.show(5)}")
-
-    df
   }
 
   // Function to calculate average prices per day
