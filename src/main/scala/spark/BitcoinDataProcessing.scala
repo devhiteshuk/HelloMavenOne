@@ -45,6 +45,7 @@ object BitcoinDataProcessing {
     df.withColumn("Date", from_unixtime(col("Timestamp")).cast("timestamp")) // Convert Timestamp to Date
 
     print(s"New Field added ${df.show(5)}")
+    df
   }
 
   // Function to calculate average prices per day
