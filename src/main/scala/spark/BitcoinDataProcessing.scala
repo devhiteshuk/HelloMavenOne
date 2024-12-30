@@ -33,8 +33,8 @@ object BitcoinDataProcessing {
     println("*************************************************************************************")
 
     transformData(df)
-    calculateAveragePrices(df)
-    calculateMovingAverage(df)
+    //calculateAveragePrices(df)
+    //calculateMovingAverage(df)
     spark.stop()
 
   }
