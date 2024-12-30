@@ -4,7 +4,7 @@ import org.apache.spark.sql.{SparkSession, DataFrame}
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.expressions.Window
 
-object BitcoinDataProcessingNew {
+object BitcoinPostgresTransformation {
 
   // Main entry point
   def main(args: Array[String]): Unit = {
