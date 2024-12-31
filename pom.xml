@@ -5,8 +5,12 @@
          http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.dhl</groupId>
+    <!--<groupId>com.dhl</groupId>
     <artifactId>HelloMavenOne</artifactId>
+    <version>1.0</version>-->
+
+    <groupId>com.dhl</groupId>
+    <artifactId>finance</artifactId>
     <version>1.0</version>
 
     <properties>

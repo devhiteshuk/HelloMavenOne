@@ -1,19 +1,17 @@
 package spark
 
-import org.apache.spark.sql.{SparkSession, DataFrame}
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.expressions.Window
 
-object BitcoinPostgresTransformation {
+/*object BitcoinPostgresTransformation {
 
   // Main entry point
-  def main(args: Array[String]): Unit = {
+  def localMain(args: Array[String]): Unit = {
     implicit val spark: SparkSession = SparkSession.builder
       .appName("Bitcoin Data Processing")
       .master("local[*]") // Adjust the master setting based on your cluster or local setup
       .getOrCreate()
 
-    val filePath = "D:\\Workspace\\BitcoinProject\\assets\\bitcoin_data.csv"
+    val filePath = "/tmp/bigdata_nov_2024/hitesh/bitcoin_data.csv"
     val processedData = processData(filePath)
 
     if (processedData != null) {
@@ -66,14 +64,14 @@ object BitcoinPostgresTransformation {
     val withSMA_DF = withPercentageChangeDF.withColumn("SMA_5", avg("Close").over(windowSpecSMA))
 
     // Bollinger Bands (Upper and Lower)
-    val withBollingerBandsDF = withSMA_DF.withColumn("UpperBand", col("SMA_5") + 2 * stddev("Close").over(windowSpecSMA))
-      .withColumn("LowerBand", col("SMA_5") - 2 * stddev("Close").over(windowSpecSMA))
+    val withBollingerBandsDF = withSMA_DF.withColumn("UpperBand", col("SMA_5") + 2 * stddev(col("Close")).over(windowSpecSMA))
+      .withColumn("LowerBand", col("SMA_5") - 2 * stddev(col("Close")).over(windowSpecSMA))
 
     // Rolling volatility (calculated as standard deviation over 5-period window)
-    val withRollingVolatilityDF = withBollingerBandsDF.withColumn("RollingVolatility", stddev("Close").over(windowSpecSMA))
+    val withRollingVolatilityDF = withBollingerBandsDF.withColumn("RollingVolatility", stddev(col("Close")).over(windowSpecSMA))
 
     // Filter extreme values (outliers) based on Z-score (mean = 0, stddev = 1)
-    val meanAndStdDev = withRollingVolatilityDF.select(mean("Close").as("mean"), stddev("Close").as("stddev")).head()
+    val meanAndStdDev = withRollingVolatilityDF.select(mean("Close").as("mean"), stddev(col("Close")).as("stddev")).head()
     val mean = meanAndStdDev.getAs[Double]("mean")
     val stddev = meanAndStdDev.getAs[Double]("stddev")
     val withZScoreFilteredDF = withRollingVolatilityDF.withColumn("ZScore", (col("Close") - mean) / stddev)
@@ -118,5 +116,5 @@ object BitcoinPostgresTransformation {
     df.write
       .jdbc(url, "bitcoin_processed_data", properties)
   }
-}
+}*/
 
